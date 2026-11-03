@@ -1,6 +1,44 @@
 <!doctype html><html lang="es-PR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#1a211b"><meta name="description" content="Explora una factura auténtica de LUMA y toca los cargos para entender qué significa cada uno y cómo afecta tu consumo y las placas solares. Herramienta educativa gratuita de Solar con Cristian."><title>Aprende a leer tu factura de LUMA — Interactiva | Solar con Cristian</title><style>
 :root{--bg:#f7f3e9;--paper:#fffdf7;--dark:#1a211b;--text:#20271f;--muted:#637061;--line:#e0dece;--lime:#d9ff66;--accent:#85a747;--shadow:0 16px 38px rgba(30,38,20,.075)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}button,a{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid #83b73c;outline-offset:4px}.shell{max-width:1220px;margin:0 auto;padding:0 24px}.top{background:var(--dark);color:#fff}.top .shell{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:12px;font:700 22px/1 Georgia,serif;letter-spacing:-.045em}.symbol{width:24px;height:24px;flex:0 0 24px;border-radius:5px 14px 5px 14px;background:var(--lime);transform:rotate(-7deg)}.header-meta{font-size:10px;letter-spacing:.13em;color:#d9e2d0;font-weight:850;text-transform:uppercase;text-align:right}.hero{padding:57px 0 48px;border-bottom:1px solid var(--line)}.hero .eyebrow,.overline{font-size:10px;letter-spacing:.15em;font-weight:900;text-transform:uppercase;color:#60834b}.hero .eyebrow:before{content:'';width:23px;height:2px;background:#95bc59;display:inline-block;vertical-align:middle;margin-right:10px}.hero h1{font:500 clamp(49px,5.9vw,79px)/1.01 Georgia,serif;letter-spacing:-.07em;max-width:860px;margin:19px 0 20px}.hero h1 em{font-weight:400;font-style:italic;text-decoration:underline;text-decoration-color:#b7e05b;text-decoration-thickness:7px;text-underline-offset:4px}.hero-desc{font-size:15px;line-height:1.7;max-width:730px;color:#5b6957;margin:0 0 22px}.tags{display:flex;gap:8px;flex-wrap:wrap}.tags span{font-size:11px;padding:8px 12px;background:#fffdf7;border:1px solid #dce0d2;border-radius:99px;color:#4d6246;font-weight:750}.legal{margin-top:17px;color:#818779;font-size:11px;line-height:1.5}.interface{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:25px;align-items:start;padding-top:34px;padding-bottom:45px}.reader-header{background:#fffdf7;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}.reader-header strong{font-size:13px}.reader-header p{font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 13px}.navchips{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;scrollbar-width:thin}.navchips a{flex:0 0 auto;text-decoration:none;background:#f1f4e8;border:1px solid #dae0cc;border-radius:9px;padding:11px 13px;font-size:11px;font-weight:850;min-height:42px}.navchips a:hover{background:#e8efdb}.bill-section{margin-top:24px;scroll-margin-top:18px}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 5px 13px}.page-heading h3{font:500 25px/1.12 Georgia,serif;letter-spacing:-.035em;margin:7px 0 5px}.page-heading p{font-size:12px;color:#64705e;margin:0;line-height:1.5}.page-badge{font:500 28px Georgia,serif;color:#8ca16f}.bill-page{position:relative;background:white;border:1px solid #e0e0d8;border-radius:8px;overflow:hidden;box-shadow:0 16px 32px #1b231d12;line-height:0}.bill-page img{display:block;width:100%;height:auto}.hotspot{position:absolute;z-index:2;padding:0;margin:0;border:1px solid rgba(90,137,20,.37);outline:none;background:rgba(220,255,116,.055);border-radius:4px;line-height:1;text-align:right;display:flex;justify-content:flex-end;align-items:flex-start;transition:background .16s,border-color .16s}.hotspot:hover,.hotspot:focus-visible{border:2px solid #80b428;background:rgba(217,255,102,.28)}.hotspot.selected{border:2px solid #5b892a;background:rgba(217,255,102,.3)}.hotspot-marker{font:900 10px Arial,sans-serif;min-width:20px;min-height:20px;display:grid;place-items:center;background:#1c2c19;color:var(--lime);border-radius:4px 0 3px 5px;box-shadow:0 1px 4px #1c2c1966}.sidebar{position:sticky;top:18px}.guide{border:1px solid var(--line);background:var(--paper);border-radius:17px;box-shadow:var(--shadow);overflow:hidden}.guide-top{background:var(--dark);color:#fff;padding:21px}.guide-top .overline{color:var(--lime)}.guide-top h2{font:500 30px/1.08 Georgia,serif;letter-spacing:-.04em;margin:9px 0 0}.guide-top p{color:#cad7c5;font-size:12px;line-height:1.55;margin:12px 0 0}.guide-body{padding:20px;max-height:calc(100vh - 170px);overflow-y:auto}.number-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;background:#edf3de;color:#4d6d3d;padding:8px 10px;border-radius:99px;font-weight:900}.guide-body h3{font:500 30px/1.06 Georgia,serif;letter-spacing:-.045em;margin:18px 0}.guide-block{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}.guide-block b{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:#52684b;margin-bottom:8px}.guide-block p{margin:0;font-size:13px;line-height:1.67;color:#505e4d}.guide-block.solar{background:#f1f5e6;padding:15px;border-radius:10px;border:0}.guide-block.solar b{color:#416c33}.example{font-size:12px;line-height:1.65;color:#4c5f43;background:#eff3e6;border-left:3px solid #aed557;padding:12px 14px;border-radius:0 9px 9px 0;margin-top:15px}.sidebar-actions{padding:14px 20px 20px;display:flex;gap:8px}.btn{border:1px solid #cbd7ba;background:#edf2e4;padding:11px 13px;border-radius:9px;font-size:12px;font-weight:850;min-height:42px;flex:1}.btn:hover{background:#e0edcf}.cta{background:#e9f1d8;border-radius:18px;padding:27px;margin:0 0 39px;display:grid;grid-template-columns:1.4fr 1fr;gap:23px;align-items:center}.cta h2{font:500 34px/1.08 Georgia,serif;letter-spacing:-.04em;margin:9px 0}.cta p{font-size:13px;color:#4c6048;line-height:1.65;margin:0}.cta-link{background:var(--dark);color:white;text-decoration:none;font-weight:850;font-size:13px;padding:16px 18px;min-height:56px;border-radius:11px;display:flex;align-items:center;justify-content:center;text-align:center}.cta-link:hover{background:#3c5034}.morelinks{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:12px}.morelinks a{font-size:12px;color:#37592d;text-underline-offset:3px}.foot{padding:24px 0 50px;border-top:1px solid var(--line);font-size:11px;line-height:1.65;color:#677264;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.foot strong{color:#384938}.bottom-sheet-backdrop{position:fixed;inset:0;background:rgba(15,24,14,.5);z-index:19;display:none}.bottom-sheet{display:none}.skip{position:absolute;top:-100px}.skip:focus{top:10px;left:10px;background:var(--lime);color:#182114;padding:12px;z-index:100}.floating-help{display:none}
 @media(max-width:940px){.interface{grid-template-columns:1fr}.sidebar{display:none}.cta{grid-template-columns:1fr}.bottom-sheet-backdrop.open{display:block}.bottom-sheet{position:fixed;z-index:20;left:0;right:0;bottom:0;display:block;transform:translateY(110%);transition:transform .28s ease-out;background:var(--paper);border-radius:20px 20px 0 0;max-height:min(82dvh,720px);box-shadow:0 -12px 40px #0003;overflow:hidden}.bottom-sheet.open{transform:translateY(0)}.sheet-handle{display:block;margin:11px auto 6px;width:46px;height:5px;border-radius:99px;background:#c9d1c1}.sheet-head{padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.sheet-head span{color:#5c7a45;font-size:11px;font-weight:850;letter-spacing:.1em}.close-sheet{font-size:24px;line-height:1;min-height:39px;min-width:39px;border:1px solid var(--line);background:#f6f8ef;border-radius:50%}.sheet-content{overflow-y:auto;max-height:calc(min(82dvh,720px) - 85px);padding:0 19px 23px}.sheet-content .guide-body{max-height:none;padding:0}.sheet-content .guide-body h3{font-size:29px}.sheet-content .guide-block{margin-top:12px;padding-top:11px}.sheet-content .guide-block.solar{padding:14px}.sheet-content .guide-body .number-tag{margin-top:15px}.floating-help{display:flex;position:sticky;bottom:12px;z-index:9;align-items:center;justify-content:space-between;gap:9px;background:var(--dark);color:#fff;padding:10px 14px;border-radius:12px;font-size:12px;box-shadow:0 8px 20px #0003;margin:0 8px 10px}.floating-help span{color:#e1ebd8;font-weight:700}.floating-help button{background:var(--lime);color:#172215;border:0;border-radius:8px;padding:11px;font-size:12px;font-weight:850}}@media(max-width:580px){.shell{padding-inline:13px}.top .shell{min-height:64px}.brand{font-size:18px;gap:9px}.symbol{width:20px;height:20px;flex-basis:20px}.header-meta{font-size:9px;letter-spacing:.04em;max-width:143px}.hero{padding:34px 0 30px}.hero h1{font-size:clamp(44px,10.8vw,58px)}.hero-desc{font-size:14px}.interface{padding-top:18px}.reader-header{padding:14px}.page-heading h3{font-size:24px}.page-heading p{font-size:11px}.bill-section{margin-top:19px}.hotspot{border-color:rgba(86,122,33,.36);border-radius:2px}.hotspot-marker{min-width:15px;min-height:15px;font-size:8px}.cta{padding:21px}.cta h2{font-size:29px}.foot{display:block}.foot>span{display:block;margin-bottom:10px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bottom-sheet{transition:none}.hotspot{transition:none}}
+
+/* Microlecciones visuales sobre la factura auténtica de agosto de 2024 */
+.edu-feature{margin:17px 0 16px;padding:16px;border:1px solid #cbd9b6;border-radius:14px;background:linear-gradient(160deg,#f6f8ef,#eef4df);color:#263520}
+.edu-overline{font:900 10px/1.35 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#557545;margin-bottom:10px}
+.edu-hook{font:500 19px/1.2 Georgia,serif;letter-spacing:-.025em;margin:0 0 14px;color:#24321d}
+.edu-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}
+.edu-stat{background:#fffdf7;border:1px solid #dce4cd;border-radius:10px;padding:12px;min-width:0}
+.edu-stat-label{display:block;font:750 10px/1.3 Arial,sans-serif;color:#69745e;margin-bottom:6px}
+.edu-stat strong{display:block;font:700 clamp(18px,2.4vw,26px)/1.1 Arial,sans-serif;letter-spacing:-.04em;color:#1b2a18}
+.edu-stat small{display:block;color:#66755b;font:500 10px/1.4 Arial,sans-serif;margin-top:5px}
+.edu-track{height:13px;width:100%;background:#e0e7d3;border-radius:99px;overflow:hidden;display:flex;margin:7px 0}
+.edu-track span{display:block;height:100%;background:#6c9542;border-radius:99px 0 0 99px}
+.edu-track span.rest{background:#d0d9bc;border-radius:0 99px 99px 0}
+.edu-percent{display:flex;justify-content:space-between;gap:8px;font:800 11px/1.4 Arial,sans-serif;color:#4d6640}
+.edu-formula{border:1px solid #d4dfc5;background:#fffdf7;border-radius:10px;padding:12px;text-align:center;margin-top:12px}
+.edu-formula small{display:block;font:750 10px/1.4 Arial,sans-serif;color:#66735c;margin-bottom:5px}
+.edu-formula strong{font:750 14px/1.45 Arial,sans-serif;letter-spacing:-.012em;color:#253320}
+.edu-note{font:500 11px/1.5 Arial,sans-serif;color:#637157;margin:10px 0 0}
+.edu-bars{display:grid;gap:10px;margin-top:15px}
+.edu-barrow{display:grid;grid-template-columns:75px minmax(0,1fr) 72px;gap:9px;align-items:center}
+.edu-barrow label{font:700 10px/1.35 Arial,sans-serif;color:#586651}
+.edu-barrow strong{font:800 11px/1.35 Arial,sans-serif;color:#273626;text-align:right}
+.edu-bartrack{background:#dfe7d1;height:12px;border-radius:99px;overflow:hidden}
+.edu-bartrack i{display:block;height:100%;background:#769d49;border-radius:99px}
+.edu-barrow.focus .edu-bartrack i{background:#293a25}
+.edu-barrow.focus strong{color:#233c1d}
+.edu-detail{margin-top:15px;border:1px solid #d4deca;background:#fafbf6;border-radius:11px;overflow:hidden}
+.edu-detail summary{list-style:none;cursor:pointer;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;font:850 12px/1.45 Arial,sans-serif;color:#335528}
+.edu-detail summary::-webkit-details-marker{display:none}
+.edu-detail summary:after{content:'+';font-size:20px;line-height:1;font-weight:500}
+.edu-detail[open] summary:after{content:'−'}
+.edu-detail summary:focus-visible{outline:3px solid #82ad45;outline-offset:-3px}
+.edu-detail-body{padding:0 15px 15px;font:500 12px/1.65 Arial,sans-serif;color:#4b5a45}
+.edu-detail-body p{margin:0 0 11px}
+.edu-detail-body p:last-child{margin-bottom:0}
+.edu-detail-body b{color:#354b2e}
+@media(max-width:580px){.edu-feature{padding:13px}.edu-hook{font-size:19px}.edu-barrow{grid-template-columns:67px minmax(0,1fr) 70px;gap:7px}.edu-stat strong{font-size:21px}.edu-formula strong{font-size:12px}}
+
 </style></head><body>
 <a class="skip" href="#facturas">Ir a la factura interactiva</a>
 <header class="top"><div class="shell"><div class="brand"><i class="symbol" aria-hidden="true"></i>Solar con Cristian</div><div class="header-meta">Herramienta gratuita · Puerto Rico</div></div></header>
@@ -45,7 +83,7 @@
 <button type="button" class="hotspot" data-point="pricehistory" aria-label="Explicar Historial de costo por kWh" title="Historial de costo por kWh" style="left:7.026%;top:32.071%;width:85.294%;height:25.884%"><span class="hotspot-marker" aria-hidden="true">24</span></button></div>
       </section>
 </div>
-<aside class="sidebar"><div class="guide"><div class="guide-top"><span class="overline">EXPLICACIÓN INMEDIATA</span><h2>Toca un concepto.</h2><p>La factura es el punto de partida. Te ayudo a leerla como si estuviéramos sentados en una orientación.</p></div><div id="sidebarText"></div><div class="sidebar-actions"><button class="btn" type="button" id="prevTopic">← Anterior</button><button class="btn" type="button" id="nextTopic">Siguiente →</button></div></div></aside></div>
+<aside class="sidebar"><div class="guide"><div class="guide-top"><span class="overline">EDUCACIÓN BASADA EN DATOS</span><h2>Toca y descubre los números.</h2><p>La factura es el punto de partida. Te ayudo a leerla como si estuviéramos sentados en una orientación.</p></div><div id="sidebarText"></div><div class="sidebar-actions"><button class="btn" type="button" id="prevTopic">← Anterior</button><button class="btn" type="button" id="nextTopic">Siguiente →</button></div></div></aside></div>
 <section class="cta"><div><span class="overline">DE LA EDUCACIÓN A TU CASO REAL</span><h2>¿Quieres que revisemos <em>tu</em> factura?</h2><p>Ya sabes dónde mirar. Si quieres entender tus cargos o calcular si un sistema solar se ajusta a tu consumo, escríbeme para evaluar tu caso. No prometemos montos fijos sin revisar tus datos.</p><div class="morelinks"><a href="./calculadora-solar.html">Calcula cuántas placas podrías necesitar →</a><a href="./">Calcula el consumo de tus aires →</a></div></div><a class="cta-link" id="whatsapp" href="https://wa.me/17873901302" target="_blank" rel="noopener noreferrer">Evaluar mi factura por WhatsApp ↗</a></section>
 <footer class="foot"><span><strong>SOLAR CON CRISTIAN</strong><br>Herramienta educativa independiente. No afiliada a LUMA.<br>Documento de agosto de 2024 proporcionado como ejemplo, anonimizado antes de publicarse.</span><span>Esta guía no sustituye una reclamación ni información tarifaria actual de LUMA o del Negociado de Energía. Siempre verifica los cargos de tu período vigente.</span></footer></main>
 <div id="backdrop" class="bottom-sheet-backdrop" aria-hidden="true"></div><section id="bottomSheet" class="bottom-sheet" role="dialog" aria-modal="true" aria-label="Explicación del concepto seleccionado" aria-hidden="true"><span class="sheet-handle" aria-hidden="true"></span><div class="sheet-head"><span id="sheetTitle">EXPLICACIÓN</span><button class="close-sheet" type="button" aria-label="Cerrar explicación">×</button></div><div id="sheetContent" class="sheet-content"></div></section>
@@ -59,15 +97,83 @@
  let chosen=null;let recentFocus=null;
  const nodes={backdrop:$('#backdrop'),sheet:$('#bottomSheet'),sheetText:$('#sheetContent'),sidebar:$('#sidebarText'),sheetTitle:$('#sheetTitle')};
  const escapeHtml=s=>String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+ const enhanced={
+  consumption:{
+    visual:`<div class="edu-feature"><div class="edu-overline">Tu consumo, visto con números</div><h4 class="edu-hook">El uso eléctrico subió 47.1% frente al mes anterior.</h4>
+      <div class="edu-stat-grid"><div class="edu-stat"><span class="edu-stat-label">Período de 31 días</span><strong>774 kWh</strong><small>Consumo facturado</small></div><div class="edu-stat"><span class="edu-stat-label">Promedio diario</span><strong>25 kWh</strong><small>774 ÷ 31 días ≈ 25</small></div></div>
+      <div class="edu-bars" role="img" aria-label="Comparación de consumo: agosto 2023 574 kilovatios hora; julio 2024 526; agosto 2024 774">
+        <div class="edu-barrow"><label>Ago. 2023</label><div class="edu-bartrack"><i style="width:74.16%"></i></div><strong>574 kWh</strong></div>
+        <div class="edu-barrow"><label>Jul. 2024</label><div class="edu-bartrack"><i style="width:67.96%"></i></div><strong>526 kWh</strong></div>
+        <div class="edu-barrow focus"><label>Ago. 2024</label><div class="edu-bartrack"><i style="width:100%"></i></div><strong>774 kWh</strong></div>
+      </div>
+      <p class="edu-note">Las barras comparan energía, no dinero. Los datos provienen de la página 1 de esta factura de 2024.</p>
+    </div>`,
+    more:`<details class="edu-detail"><summary>Entiende los números y qué debes vigilar</summary><div class="edu-detail-body">
+      <p><b>kWh no es kW.</b> kW expresa potencia; kWh expresa energía utilizada. Un equipo de 1 kW encendido durante una hora consume aproximadamente 1 kWh.</p>
+      <p><b>La comparación:</b> 774 − 526 = 248 kWh más que el mes anterior. Un salto puede venir de uso de aires, más horas en casa o nuevos equipos. No permite determinar la causa por sí solo.</p>
+      <p><b>Para evaluar solar:</b> recoge los 12 consumos mensuales completos. Un mes alto no representa necesariamente todo el año, y con medición neta los kWh facturados pueden diferir del uso bruto del hogar.</p>
+    </div></details>`
+  },
+  fca:{
+    visual:`<div class="edu-feature"><div class="edu-overline">Dato real · página 3</div><h4 class="edu-hook">Más de la mitad de esta factura corresponde al combustible.</h4>
+      <div class="edu-stat-grid"><div class="edu-stat"><span class="edu-stat-label">Ajuste FCA</span><strong>$99.11</strong><small>De $184.10 totales</small></div><div class="edu-stat"><span class="edu-stat-label">Parte de la factura</span><strong>53.8%</strong><small>Calculado de los cargos</small></div></div>
+      <div class="edu-track" role="img" aria-label="El cargo de combustible representa aproximadamente 53.8 por ciento del total"><span style="width:53.84%"></span><span class="rest" style="width:46.16%"></span></div>
+      <div class="edu-percent"><span>FCA · 53.8%</span><span>Otros cargos · 46.2%</span></div>
+      <div class="edu-formula"><small>¿De dónde salieron esos $99.11?</small><strong>774 kWh × $0.128051/kWh ≈ $99.11</strong></div>
+      <p class="edu-note">Ejemplo histórico: agosto de 2024. No representa el ajuste vigente.</p>
+    </div>`,
+    more:`<details class="edu-detail"><summary>Entiende los números y qué debes vigilar</summary><div class="edu-detail-body">
+      <p><b>El dato que debes observar:</b> el factor FCA expresado en $/kWh. Puedes consumir igual que otro mes y enfrentar un cargo diferente si cambia ese factor.</p>
+      <p><b>Ejemplo matemático:</b> con 774 kWh, una variación hipotética de $0.01/kWh en el factor cambiaría este renglón aproximadamente $7.74. Esto no es una predicción de tarifas ni un cálculo de ahorro solar.</p>
+      <p><b>Si tienes placas:</b> importa cuánta energía queda sujeta a facturación y cómo se aplican los créditos de medición neta. El porcentaje de esta factura no es un ahorro garantizado.</p>
+    </div></details>`
+  },
+  ppca:{
+    visual:`<div class="edu-feature"><div class="edu-overline">Dato real · página 3</div><h4 class="edu-hook">Combustible y compra de energía suman casi el 69% del recibo.</h4>
+      <div class="edu-stat-grid"><div class="edu-stat"><span class="edu-stat-label">Ajuste PPCA</span><strong>$27.88</strong><small>15.1% de $184.10</small></div><div class="edu-stat"><span class="edu-stat-label">FCA + PPCA</span><strong>$126.99</strong><small>69.0% del total</small></div></div>
+      <div class="edu-track" role="img" aria-label="FCA y PPCA suman cerca de 69 por ciento del recibo"><span style="width:68.98%"></span><span class="rest" style="width:31.02%"></span></div>
+      <div class="edu-percent"><span>FCA + PPCA · 69.0%</span><span>Resto · 31.0%</span></div>
+      <div class="edu-formula"><small>¿De dónde salieron esos $27.88?</small><strong>774 kWh × $0.036023/kWh ≈ $27.88</strong></div>
+      <p class="edu-note">Porcentajes calculados a partir de los renglones de agosto de 2024; no son tasas actuales.</p>
+    </div>`,
+    more:`<details class="edu-detail"><summary>¿En qué se diferencian FCA y PPCA?</summary><div class="edu-detail-body">
+      <p><b>FCA:</b> ajuste por costos de combustible. <b>PPCA:</b> ajuste por costos de compra de energía. Son renglones distintos; ambos se calculan mediante factores aplicados a los kWh indicados en este recibo.</p>
+      <p><b>El desglose:</b> $99.11 de FCA + $27.88 de PPCA = $126.99. Los demás $57.11 incluyen cargos base y otras cláusulas.</p>
+      <p><b>Para comparar con solar:</b> no asumas que ambos cargos desaparecen. El resultado depende de la energía facturada, el régimen de medición neta, cargos fijos y créditos aplicables.</p>
+    </div></details>`
+  },
+  pricehistory:{
+    visual:`<div class="edu-feature"><div class="edu-overline">Tarifa promedio · datos de portada</div><h4 class="edu-hook">El costo por kWh puede cambiar aunque el consumo sea igual.</h4>
+      <div class="edu-stat-grid"><div class="edu-stat"><span class="edu-stat-label">Agosto de 2023</span><strong>20.19¢</strong><small>Por cada kWh</small></div><div class="edu-stat"><span class="edu-stat-label">Agosto de 2024</span><strong>23.79¢</strong><small>Por cada kWh</small></div></div>
+      <div class="edu-bars" role="img" aria-label="Costo promedio por kWh agosto de 2023 20.19 centavos, julio de 2024 23.78 centavos, agosto de 2024 23.79 centavos">
+        <div class="edu-barrow"><label>Ago. 2023</label><div class="edu-bartrack"><i style="width:67.3%"></i></div><strong>20.19¢</strong></div>
+        <div class="edu-barrow"><label>Jul. 2024</label><div class="edu-bartrack"><i style="width:79.27%"></i></div><strong>23.78¢</strong></div>
+        <div class="edu-barrow focus"><label>Ago. 2024</label><div class="edu-bartrack"><i style="width:79.3%"></i></div><strong>23.79¢</strong></div>
+      </div>
+      <p class="edu-note">Escala visual de 0 a 30¢/kWh. Valores tomados de la comparación de la página 1; el historial en la página 4 está redondeado.</p>
+    </div>`,
+    more:`<details class="edu-detail"><summary>Cómo interpretar estas variaciones</summary><div class="edu-detail-body">
+      <p><b>Un año de diferencia:</b> entre agosto de 2023 y agosto de 2024 el indicador pasó de 20.19¢ a 23.79¢/kWh: aproximadamente 3.60¢ más por kWh.</p>
+      <p><b>Un mes de diferencia:</b> de julio a agosto de 2024 apenas cambió de 23.78¢ a 23.79¢/kWh, mientras los kWh del período aumentaron de 526 a 774. Consumo y costo unitario deben examinarse por separado.</p>
+      <p><b>No confundas indicadores:</b> este costo promedio histórico no es un factor FCA ni una tarifa fija contractual. La portada también informa un promedio de 12 meses de $0.2358/kWh.</p>
+    </div></details>`
+  }
+ };
+ const extendedVisual=key=>enhanced[key]?.visual||'';
+ const extendedMore=key=>enhanced[key]?.more||'';
+
  const presentation=(key)=>{
    const t=topics[key];const index=keys.indexOf(key)+1;
    return `<div class="guide-body">
    <span class="number-tag">${String(index).padStart(2,'0')} / ${keys.length} · Página ${t.page}</span>
    <h3>${escapeHtml(t.title)}</h3>
+   ${extendedVisual(key)}
    <div class="guide-block"><b>¿Qué significa?</b><p>${escapeHtml(t.what)}</p></div>
    <div class="guide-block"><b>¿Cómo afecta tu factura?</b><p>${escapeHtml(t.affect)}</p></div>
    <div class="guide-block solar"><b>☀️ ¿Y si tienes placas solares?</b><p>${escapeHtml(t.solar)}</p></div>
    <div class="example"><strong>Ejemplo real de esta factura de 2024:</strong> ${escapeHtml(t.example)}</div>
+   ${extendedMore(key)}
    </div>`;
  };
  function select(key,fromHotspot=true){
