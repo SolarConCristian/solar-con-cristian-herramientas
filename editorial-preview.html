@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es-PR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#181b18">
+  <meta name="description" content="Calcula cuánto podrían costarte los aires acondicionados de tu casa en Puerto Rico, según tus horas de uso y tarifa de electricidad. Gratis, por Solar con Cristian.">
+  <title>Editorial Premium · Calculadora de aire · Solar con Cristian</title>
+  <style>
+    :root { --ink:#161918; --ink2:#252a26; --cream:#f6f5ef; --paper:#fffefa; --line:#d9dfd4; --muted:#5f6860; --acid:#d9ff69; --accent:#c2f340; --shadow:0 22px 70px rgba(17,25,19,.10); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:var(--cream); -webkit-font-smoothing:antialiased; }
+    button, input, select { font:inherit; }
+    button, a { -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline:3px solid #7c992b; outline-offset:3px; }
+    a { color:inherit; }
+    .shell { max-width:1120px; margin:auto; }
+    .hero { background:var(--ink); color:#f6f8f1; overflow:hidden; }
+    .hero-inner { padding:20px 24px 66px; position:relative; min-height:520px; }
+    .brand { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:11px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; position:relative; z-index:2; }
+    .mark { display:flex; align-items:center; gap:9px; white-space:nowrap; }
+    .mark-square { width:20px; height:20px; background:var(--acid); display:inline-block; transform:rotate(-10deg); position:relative; }
+    .mark-square:after { content:""; position:absolute; width:9px; height:9px; background:var(--ink); inset:5.5px; }
+    .brand-right { color:#d3d8d0; font-weight:500; font-size:10px; letter-spacing:.12em; text-align:right; }
+    .hero-grid { display:grid; grid-template-columns:1.17fr .83fr; gap:28px; align-items:center; min-height:415px; position:relative; z-index:1; }
+    .eyebrow { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--acid); display:flex; align-items:center; gap:10px; margin:62px 0 17px; }
+    .eyebrow:before { content:""; width:27px; height:1px; background:var(--acid); }
+    h1 { font-size:clamp(3rem,6vw,5.95rem); line-height:.98; letter-spacing:-.065em; margin:0; max-width:700px; font-weight:850; }
+    h1 em { color:var(--acid); font:italic 1em Georgia, 'Times New Roman', serif; letter-spacing:-.065em; }
+    .hero-desc { max-width:525px; margin:25px 0 24px; color:#bec6bc; font-size:16px; line-height:1.65; }
+    .hero-badges { display:flex; flex-wrap:wrap; gap:8px; }
+    .hero-badges span { border:1px solid #4e574e; border-radius:100px; padding:10px 14px; font-size:11px; font-weight:700; letter-spacing:.01em; }
+    .orb-wrap { position:relative; width:min(100%,360px); aspect-ratio:1; margin:55px auto 0; display:flex; align-items:center; justify-content:center; }
+    .orb { border:1px solid #4a5745; width:88%; aspect-ratio:1; border-radius:100%; display:flex; align-items:center; justify-content:center; position:relative; transform:rotate(-20deg); }
+    .orb::before,.orb::after { content:""; position:absolute; border-radius:100%; border:1px dashed #556350; }
+    .orb:before { inset:22px; }
+    .orb:after { inset:-30px; opacity:.35; }
+    .orb-core { background:var(--acid); color:var(--ink); width:63%; aspect-ratio:1; border-radius:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; transform:rotate(20deg); box-shadow:0 0 85px rgba(217,255,105,.1); }
+    .orb-core b { font-size:clamp(70px,9vw,110px); font-weight:300; font-family:Georgia,serif; line-height:.85; }
+    .orb-core small { font-size:10px; font-weight:800; letter-spacing:.2em; margin-top:14px; }
+    .orbit-note { color:var(--acid); font-size:11px; letter-spacing:.2em; text-transform:uppercase; position:absolute; top:10px; right:0; transform:rotate(8deg); }
+    .arc { width:43px; height:43px; position:absolute; left:0; bottom:14%; border:2px solid var(--acid); border-radius:50%; border-right-color:transparent; transform:rotate(30deg); }
+    .content { padding:0 24px 70px; }
+    .intro { display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:16px; padding:46px 0 27px; }
+    .section-kicker { display:block; font-size:11px; letter-spacing:.13em; font-weight:850; color:#50604b; margin-bottom:12px; }
+    h2 { font-size:clamp(29px,3.4vw,43px); line-height:1.06; letter-spacing:-.055em; margin:0; font-weight:850; }
+    .intro p { margin:0; color:var(--muted); font-size:14px; max-width:335px; line-height:1.55; }
+    .grid-main { display:grid; grid-template-columns: minmax(0,1.1fr) minmax(310px,.9fr); gap:22px; align-items:start; }
+    .paper { background:var(--paper); border:1px solid var(--line); border-radius:19px; box-shadow:var(--shadow); overflow:hidden; }
+    .paper-pad { padding:26px; }
+    .topline { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:17px; }
+    .topline h3 { margin:0; font-size:19px; letter-spacing:-.035em; }
+    .counter { font-size:11px; font-weight:800; color:var(--muted); letter-spacing:.08em; }
+    .input-block { margin-top:19px; }
+    .label { display:block; font-weight:800; font-size:12px; margin:0 0 9px; line-height:1.3; }
+    .hint { display:block; font-size:11px; line-height:1.45; font-weight:400; color:var(--muted); margin:6px 0 0; }
+    .field { background:#f8f9f4; border:1px solid #dce1d5; border-radius:11px; display:flex; align-items:center; min-height:47px; overflow:hidden; }
+    .field:focus-within { border-color:#8ca84e; box-shadow:0 0 0 3px rgba(180,225,85,.18); }
+    .field input, .field select { width:100%; border:0; outline:0; background:transparent; color:var(--ink); min-height:46px; padding:11px 14px; font-size:15px; font-weight:700; }
+    .field select { cursor:pointer; }
+    .field .suffix { padding:0 14px; white-space:nowrap; font-size:12px; color:var(--muted); font-weight:800; }
+    .controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .air-card { padding:20px; border-radius:14px; border:1px solid #dfe5d9; background:#fff; margin-bottom:15px; }
+    .air-card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+    .air-card-head span { display:flex; gap:8px; align-items:center; font-size:13px; font-weight:850; }
+    .air-index { background:#e9efdf; border-radius:7px; width:26px; height:26px; display:grid; place-items:center; font-size:11px; }
+    .delete { background:none; border:none; color:#657265; text-decoration:underline; text-underline-offset:3px; font-size:11px; padding:8px; }
+    .delete:disabled { opacity:.3; cursor:not-allowed; }
+    .micro-note { padding:12px 14px; background:#f5f6ef; border-left:3px solid #b3ca6c; font-size:11px; color:#536053; line-height:1.55; margin-top:15px; }
+    .details { margin-top:14px; }
+    .details summary { cursor:pointer; color:#303f32; font-size:12px; font-weight:800; padding:7px 0; }
+    .details .hint { padding-bottom:4px; }
+    .details .field { margin-top:7px; }
+    .field-long { margin-top:12px; }
+    .pill-selector { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+    .pill-selector button { font-size:11px; border-radius:9px; border:1px solid #e0e5da; background:#f7f8f5; padding:12px 5px; min-height:40px; color:#4f594e; font-weight:800; }
+    .pill-selector button.active { background:var(--ink); color:var(--acid); border-color:var(--ink); }
+    .add { width:100%; background:transparent; border:1px dashed #8d9c82; border-radius:11px; font-weight:850; min-height:49px; color:#344333; font-size:13px; }
+    .add:disabled { opacity:.4; cursor:not-allowed; }
+    .bar { height:1px; background:#e0e4da; margin:24px 0; }
+    .tariff-area { padding:17px; border-radius:14px; background:#eff3e9; }
+    .tariff-area .field { background:white; }
+    .tariff-note { display:flex; gap:8px; margin-top:10px; line-height:1.5; color:#586657; font-size:11px; }
+    .tariff-note b { color:var(--ink); }
+    .results { position:sticky; top:18px; }
+    .result-dark { background:var(--ink); color:#fff; padding:29px 27px 28px; }
+    .result-dark .section-kicker { color:var(--acid); }
+    .result-label { margin:25px 0 0; color:#c0cabc; font-size:12px; font-weight:700; }
+    .big-number { font-size:clamp(47px,5vw,80px); line-height:1.12; letter-spacing:-.065em; font-weight:850; margin:7px 0 12px; color:var(--acid); font-variant-numeric:tabular-nums; word-wrap:break-word; }
+    .result-desc { font-size:12px; color:#aeb9a8; line-height:1.55; margin:0; }
+    .results-summary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-bottom:1px solid var(--line); }
+    .results-summary > div { padding:20px 23px; }
+    .results-summary > div + div { border-left:1px solid var(--line); }
+    .results-summary span { display:block; font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:7px; }
+    .results-summary b { font-size:22px; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+    .barlist { padding:23px 23px 10px; }
+    .barlist h4 { font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:#495948; margin:0 0 17px; }
+    .mini-item { margin-bottom:18px; }
+    .mini-head { display:flex; justify-content:space-between; font-size:12px; gap:8px; margin-bottom:7px; }
+    .mini-head b { white-space:nowrap; }
+    .mini-rail { height:7px; background:#e8ece2; border-radius:5px; overflow:hidden; }
+    .mini-fill { height:100%; min-width:2px; background:#a5d23d; border-radius:5px; }
+    .cta-zone { padding:0 23px 23px; }
+    .cta { display:flex; width:100%; justify-content:center; align-items:center; gap:10px; background:var(--acid); border:0; border-radius:12px; text-decoration:none; min-height:56px; padding:15px 13px; color:#132013; font-weight:850; font-size:14px; text-align:center; transition:transform .16s,background .16s; }
+    .cta:hover { background:#cff651; transform:translateY(-1px); }
+    .cta-icon { width:21px; height:21px; flex:none; }
+    .cta-sub { font-size:11px; color:var(--muted); text-align:center; line-height:1.45; margin:11px 0 0; }
+    .footer-disclaimer { padding:21px 24px; background:#eaece4; border-top:1px solid #d9dfd2; font-size:11px; line-height:1.65; color:#475347; }
+    .footer-disclaimer b { color:#263026; }
+    .example { margin:33px 0; border-top:1px solid #cbd2c4; padding-top:24px; display:grid; grid-template-columns:1fr 1.2fr; align-items:start; gap:25px; }
+    .example h3 { font-size:23px; line-height:1.12; margin:0; letter-spacing:-.035em; }
+    .example p { margin:0; font-size:13px; line-height:1.65; color:#5c665b; }
+    .fine-print { font-size:11px; line-height:1.7; color:#667064; margin:0; }
+    .footer { background:var(--ink); padding:27px 24px; color:#d9e0d5; }
+    .footer .shell { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:11px; }
+    .footer b { color:#f8f8f0; }
+    .sr-only { position:absolute; height:1px; width:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+    @media(max-width:820px){ .hero-inner { min-height:auto; padding-bottom:54px; } .hero-grid { grid-template-columns:1fr; min-height:auto; } .hero-desc { margin-bottom:20px; } .orb-wrap { position:absolute; right:-118px; top:102px; width:240px; opacity:.18; margin:0; pointer-events:none; } .hero-grid > div:first-child { position:relative; z-index:2; } .hero h1 { max-width:590px; } .grid-main { grid-template-columns:1fr; } .results { position:static; } .intro { padding-top:34px; } }
+    @media(max-width:550px){ .hero-inner { padding:18px 20px 47px; } .hero h1 { font-size:clamp(44px,11.4vw,66px); } .eyebrow { margin-top:57px; } .hero-desc { font-size:14px; } .brand-right { font-size:9px; } .hero-badges span { padding:9px 10px; font-size:10px; } .content { padding:0 13px 48px; } .intro { padding:35px 8px 24px; } .intro h2 { font-size:32px; } .paper-pad { padding:17px; } .air-card { padding:14px; } .controls { column-gap:10px; row-gap:15px; } .field input,.field select { font-size:15px; padding:9px 9px; } .field .suffix { padding:0 9px; } .topline h3 { font-size:18px; } .barlist { padding:20px 17px 3px; } .results-summary>div { padding:16px; } .results-summary b { font-size:20px; } .cta-zone { padding:0 17px 20px; } .example { grid-template-columns:1fr; gap:10px; margin:27px 8px; } .footer .shell { align-items:start; flex-direction:column; } }
+    @media(prefers-reduced-motion:reduce){ *, *:before,*:after { scroll-behavior:auto!important; transition:none!important; } }
+
+    /* Solar con Cristian — Editorial Premium concept; live calculator logic unchanged. */
+    :root { --ink:#191b17; --ink2:#242820; --cream:#f7f3ea; --paper:#fffcf7; --line:#ddd9cd; --muted:#62675c; --acid:#dcff6b; --accent:#d9f66a; --shadow:0 24px 55px rgba(31,31,20,.065); }
+    body { background:var(--cream); }
+    .hero { background:var(--cream); color:var(--ink); border-bottom:1px solid #e3dfd6; }
+    .hero-inner { min-height:unset; padding:0 28px 48px; }
+    .brand { background:#181b17; color:#fff; padding:18px 26px; margin:0 -28px; font-family:Georgia,serif; font-size:19px; letter-spacing:-.035em; font-weight:700; text-transform:none; }
+    .brand-right { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.16em; color:#c6d0c2; }
+    .mark { gap:12px; }
+    .mark-square { width:21px;height:21px;background:var(--acid);border-radius:4px 13px 4px 13px; }
+    .mark-square:after { display:none; }
+    .hero-grid { grid-template-columns:1.08fr .92fr; gap:26px; min-height:520px; }
+    .eyebrow { color:#596946; margin:42px 0 21px; font-size:10px; }
+    .eyebrow:before { background:#8cb738; }
+    .hero h1 { color:#171815; font-family:Georgia,'Times New Roman',serif; font-weight:600; font-size:clamp(54px,6.4vw,94px); line-height:.99; letter-spacing:-.067em; max-width:760px; }
+    .hero h1 em { font:italic 1em Georgia,'Times New Roman',serif; color:#171815; position:relative; white-space:nowrap; }
+    .hero h1 em::after { content:''; height:7px; border-radius:55%; background:var(--acid); position:absolute; left:-3px; right:-6px; bottom:-3px; transform:rotate(-4deg); z-index:-1; }
+    .hero-desc { color:#60675b; font-size:17px; max-width:490px; margin:27px 0 20px; }
+    .hero-badges { margin:12px 0 22px; }
+    .hero-badges span { border-color:#d9dcce; color:#5b6656; background:#fdfbf6; font-size:10px; padding:9px 12px; }
+    .hero-button { display:inline-flex; align-items:center; justify-content:space-between; gap:40px; background:var(--acid); color:#171b13; min-height:55px; padding:12px 22px; border-radius:13px; text-decoration:none; font-weight:800; box-shadow:0 13px 22px rgba(128,166,33,.14); }
+    .hero-button span { font-size:25px; }
+    .hero-button:hover { background:#cffa45; }
+    .ac-scene { position:relative; min-height:365px; height:440px; align-self:center; border-radius:22px; margin:26px 0 0; overflow:hidden; background:radial-gradient(circle at 45% 33%,#697359 0%,#373d30 36%,#171c17 84%); border:6px solid #f4efe5; box-shadow:0 25px 42px rgba(36,40,26,.17); }
+    .ac-scene::before { content:''; position:absolute; left:-10%; bottom:-50%; width:80%; aspect-ratio:1; background:radial-gradient(circle,#57764d 0%,transparent 69%); filter:blur(13px); opacity:.65; }
+    .ac-scene::after { content:''; position:absolute; inset:0; opacity:.23; background:repeating-linear-gradient(110deg,transparent 0,transparent 29px,#b6c3a4 30px,transparent 31px); mask-image:linear-gradient(to bottom,transparent 10%,black 95%); }
+    .ac-halo { position:absolute; width:78%; height:50%; border-radius:50%; top:2%; left:11%; background:#eaf2dd; filter:blur(80px); opacity:.23; }
+    .ac-machine { position:absolute; z-index:2; left:8%; right:8%; top:22%; height:160px; border-radius:28px 28px 14px 14px; background:linear-gradient(167deg,#fff 0%,#f9f7ee 46%,#c8c7b8 100%); box-shadow:0 24px 27px rgba(0,0,0,.28),0 0 0 1px #e1e0d8 inset; transform:perspective(450px) rotateY(-7deg) rotateX(4deg); }
+    .ac-machine:before { content:''; position:absolute; left:5%;right:5%;top:20px;height:3px;background:#d5d6d1;opacity:.9; }
+    .ac-machine:after { content:''; position:absolute; bottom:29px;right:9%;height:4px;width:12%;border-radius:4px;background:#b3b9ac; }
+    .ac-face { display:flex; justify-content:space-between; align-items:center; padding:65px 22px 0; color:#939a8b; }
+    .ac-brand { font-size:11px; letter-spacing:.2em; font-weight:800; }
+    .ac-led { height:4px;width:4px;border-radius:50%;background:#74b341;box-shadow:0 0 7px #74b341; }
+    .ac-vent { position:absolute;left:2%;right:2%;bottom:5px;height:25px;background:linear-gradient(#5d645a,#262d28);border-radius:3px 3px 13px 13px;display:flex;gap:10%;justify-content:center;align-items:center;overflow:hidden; }
+    .ac-vent span { display:block;width:1px;height:80%;background:#9ea39b;opacity:.55;transform:rotate(-8deg); }
+    .airflow { position:absolute; z-index:1; top:58%; width:12px;height:43%;border-radius:50%;background:#c8eeae;filter:blur(14px); opacity:.42; transform:rotate(19deg); }
+    .airflow-a { left:24%; } .airflow-b { left:49%; } .airflow-c { left:74%; }
+    .ac-caption { position:absolute;left:8%;bottom:26px;right:8%;font-size:10px;color:#e7efe4;font-weight:800;letter-spacing:.15em;z-index:3; }
+    .intro { padding:53px 0 26px; scroll-margin-top:12px; }
+    .intro h2 { font-family:Georgia,serif;font-size:clamp(37px,4vw,59px);letter-spacing:-.045em;font-weight:500; }
+    .intro h2 em { font-weight:400; }
+    .intro p { max-width:390px; }
+    .section-kicker { letter-spacing:.15em; font-size:10px; }
+    .grid-main { grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:18px; }
+    .paper { border-radius:18px; }
+    .topline h3 { font-size:21px; }
+    .air-card { border-radius:14px; background:#fffefa; border-color:#e2ded5;padding:22px; }
+    .air-index { background:var(--acid); color:#161916; }
+    .controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .btu-picker { grid-column:1 / -1; }
+    .btu-tiles { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:11px 0 4px; }
+    .btu-tile { min-height:105px;border:1px solid #dcdcd2;background:#fbfaf6;border-radius:10px;padding:12px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#22251e;transition:background .18s,transform .18s; }
+    .btu-tile b { font-size:17px;letter-spacing:-.045em; }
+    .btu-tile small { font-size:10px;font-weight:800; }
+    .tile-unit {font-size:24px;font-weight:800;line-height:1; }
+    .btu-tile.selected { background:var(--acid);border:2px solid #779b2f; }
+    .btu-tile:hover { transform:translateY(-1px); }
+    .field { border-color:#dddcd1; background:#f8f7f1; }
+    .tariff-area { background:#f3f5e8; }
+    .field-kicker { display:block;color:#617449;font-size:10px;font-weight:850;letter-spacing:.17em;margin-bottom:10px; }
+    .pill-selector button.active { background:var(--acid);color:#171a13;border-color:#8cab39; }
+    .result-dark { background:#1b1e18;padding:30px 26px 29px; }
+    .result-dark h2 { font-family:Georgia,serif; font-size:clamp(35px,3.7vw,52px);font-weight:500; }
+    .result-dark h2 em { color:#d9ff76; }
+    .big-number { font-size:clamp(47px,5vw,76px);font-weight:800; }
+    .results-summary { background:#f9f8f2; }
+    .results-summary b { font-family:Georgia,serif;font-size:25px; }
+    .cta { background:#1c2118;color:white; }
+    .cta:hover { background:#354829;color:#e9ffc0; }
+    .cta-icon { color:var(--acid); }
+    .mini-fill { background:#a4c953; }
+    .example { margin-top:55px; }
+    .example h3 { font-family:Georgia,serif; font-size:31px; font-weight:500; }
+    @media(max-width:820px) { .hero-grid { grid-template-columns:1fr;gap:0;min-height:0; }.ac-scene {margin-top:35px;max-width:570px;min-height:340px;height:380px;} .grid-main{grid-template-columns:1fr;} .hero-inner {padding-bottom:39px;} }
+    @media(max-width:550px){ .hero-inner {padding:0 15px 36px;} .brand{margin:0 -15px;padding:16px 15px;font-size:16px;} .brand-right {font-size:8px;max-width:140px;letter-spacing:.045em;} .hero .hero-grid{display:block;} .hero h1 {font-size:clamp(49px,12.5vw,69px);line-height:1.03;} .hero h1 em{white-space:normal;} .hero-desc{font-size:14px;line-height:1.6;margin:20px 0;} .eyebrow{margin-top:40px;} .hero-button{width:100%;justify-content:center;} .ac-scene {height:245px;min-height:0;margin:28px 0 0;border-width:3px;} .ac-machine{height:90px;top:20%;} .ac-face {padding:32px 12px 0;} .ac-brand {font-size:8px;} .ac-vent{height:17px;bottom:4px;} .ac-caption{bottom:15px;font-size:8px;} .hero-badges span{font-size:9px;} .content{padding:0 12px 50px;} .intro{padding-top:38px;} .intro h2{font-size:39px;} .intro p{font-size:13px;} .btu-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;} .btu-tile{min-height:95px;} .btu-tile b{font-size:19px;} .air-card{padding:13px;} .paper-pad{padding:15px;} .results-summary b{font-size:23px;} .result-dark{padding:27px 21px;} .big-number{font-size:55px;} .footer-disclaimer{font-size:11px;} }
+    @media(prefers-reduced-motion:reduce){.btu-tile:hover{transform:none;}}
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-inner">
+      <div class="brand"><div class="mark"><span class="mark-square" aria-hidden="true"></span> SOLAR CON CRISTIAN</div><div class="brand-right">HERRAMIENTA GRATIS · PUERTO RICO</div></div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">TU CASA. TUS NÚMEROS.</div>
+          <h1>¿Cuánto te cuesta tener el <em>aire</em> prendido?</h1>
+          <p class="hero-desc">Ese aire que dejas prendido toda la noche… ¿sabes cuánto puede sumar a la factura de luz? Saca un estimado en menos de un minuto, sin registrarte ni dar tus datos.</p>
+          <div class="hero-badges"><span>GRATIS</span><span>HECHO PARA PUERTO RICO</span><span>SIN REGISTRO</span></div><a class="hero-button" href="#calculadora">Empieza aquí <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="ac-scene" aria-hidden="true">
+          <div class="ac-halo"></div>
+          <div class="ac-machine"><div class="ac-face"><span class="ac-brand">CLIMA / 24°</span><div class="ac-led"></div></div><div class="ac-vent"><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="airflow airflow-a"></div><div class="airflow airflow-b"></div><div class="airflow airflow-c"></div>
+          <span class="ac-caption">CONTROLAR TU CONSUMO EMPIEZA POR ENTENDERLO</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="shell content">
+    <div class="intro" id="calculadora"><div><span class="section-kicker">01 / TU CONSUMO, CLARO Y SIN COMPLICACIONES</span><h2>Primero, escoge tu <em>aire.</em></h2></div><p>Selecciona el tamaño, dinos cuántas horas lo usas y te enseñamos lo que podría sumar a tu factura.</p></div>
+    <div class="grid-main">
+      <section class="paper" aria-labelledby="inputs-title">
+        <div class="paper-pad">
+          <div class="topline"><h3 id="inputs-title">Cuéntame de tus aires</h3><span class="counter" id="air-counter">01 GRUPO</span></div>
+          <div id="airs"></div>
+          <button class="add" id="add-air" type="button">+ Añadir otro aire</button>
+          <div class="bar"></div>
+          <div class="tariff-area"><span class="field-kicker">UNA ÚLTIMA COSA</span>
+            <label class="label" for="tariff">¿Cuánto te cobran por cada kWh?</label>
+            <div class="field"><input id="tariff" type="number" inputmode="decimal" min="0.01" max="1.50" step="0.01" value="0.30" aria-describedby="tariff-help"><span class="suffix">$/kWh</span></div>
+            <div class="tariff-note" id="tariff-help"><span aria-hidden="true">↳</span><span><b>Usamos $0.30 como ejemplo, no como tarifa oficial.</b> Si sabes cuánto te cuesta cada kWh, cambia ese número. No pongas el total de tu factura.</span></div>
+          </div>
+        </div>
+      </section>
+      <aside class="paper results" id="resultado" aria-labelledby="results-title">
+        <div class="result-dark"><span class="section-kicker">02 / LOS NÚMEROS</span><h2 id="results-title">Tu estimado,<br><em>sin vueltas.</em></h2><p class="result-label">Costo aproximado por mes de tus aires</p><div class="big-number" id="monthly-cost" aria-live="polite">$0.00</div><p class="result-desc">Esto estima solo el consumo de los aires que añadiste, no tu factura completa.</p></div>
+        <div class="results-summary"><div><span>Consumo al mes</span><b id="monthly-kwh">0 kWh</b></div><div><span>Costo al año</span><b id="annual-cost">$0</b></div></div>
+        <div class="barlist"><h4>¿Cuál aire gasta más?</h4><div id="breakdown"></div></div>
+        <div class="cta-zone"><a class="cta" id="whatsapp-cta" href="https://wa.me/17873901302?text=FACTURA" target="_blank" rel="noopener noreferrer" aria-label="Solicitar evaluación por WhatsApp"><svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.2 11.2 0 0 0 3 17l-1.4 5.3L7 20.9a11.2 11.2 0 0 0 5.1 1.2h.1A11.2 11.2 0 0 0 20.5 3.5ZM12.2 20.2a9.2 9.2 0 0 1-4.7-1.3l-.3-.2-3.2.8.9-3.1-.2-.3a9.3 9.3 0 1 1 7.5 4.1Zm5.1-7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.2c-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.3-1.4c-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4.3-.5c.1-.2 0-.4 0-.6-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4s-.9.9-.9 2.1.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.5 1.1.8 1.4.9.6.2 1.2.2 1.6.1.5-.1 1.6-.7 1.8-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.4Z"/></svg>Envíame mi resultado por WhatsApp</a><p class="cta-sub">Te lleva al WhatsApp de Solar con Cristian con tu estimado y la palabra FACTURA listos para enviar.</p></div>
+        <div class="footer-disclaimer"><b>Ojo:</b> esto es un estimado educativo. El consumo real cambia según el modelo, si es inverter, la temperatura, el aislamiento de la casa y cuánto trabaja el compresor. Los BTU indican capacidad de enfriamiento, <b>no consumo eléctrico</b>. Para afinarlo, busca los watts (W) en la placa o ficha técnica de tu aire.</div>
+      </aside>
+    </div>
+    <section class="example" aria-label="Cómo funciona el cálculo"><div><span class="section-kicker">03 / SIN COMPLICACIONES</span><h3>¿De dónde sale el estimado?</h3></div><p>Tomamos la potencia eléctrica <b>aproximada</b> de cada aire, las horas que lo usas y tu tarifa de electricidad. Por ejemplo, un aire que consume en promedio 1,000 W durante 6 horas usa cerca de <b>6 kWh al día</b>. Si tu tarifa fuera $0.30/kWh, serían cerca de <b>$1.80 por día de uso</b>. Es un ejemplo, no una promesa sobre un equipo específico.</p></section>
+    <p class="fine-print">Criterio de cálculo: kWh/mes ≈ (watts estimados ÷ 1,000) × horas por día × días por semana × (52 ÷ 12). Para los BTU usamos una referencia ilustrativa de 12 BTU/W y un factor de trabajo ajustable (60%, 80% o 100%); no sustituye medición de potencia ni etiqueta de eficiencia. Sin almacenamiento de datos personales ni seguimiento en este archivo. Al tocar WhatsApp, compartirás solamente el mensaje que decidas enviar.</p>
+  </main>
+  <footer class="footer"><div class="shell"><div><b>SOLAR CON CRISTIAN</b> <span style="color:#a1b09d">/ EDUCACIÓN ENERGÉTICA EN PR</span></div><div>Entiende tu consumo antes de tomar una decisión.</div></div></footer>
+  <script>
+  (function(){
+    'use strict';
+    const WHATSAPP='17873901302';
+    const CAPACITIES=[12000,18000,24000,36000];
+    const LEVEL_OPTIONS=[{value:0.6,name:'Poco'},{value:0.8,name:'Normal'},{value:1,name:'Mucho'}];
+    const weeklyFactor=52/12;
+    let nextId=2;
+    const airs=[{id:1,btu:18000,qty:1,hours:6,days:7,level:0.8,watts:''}];
+    const $=id=>document.getElementById(id);
+    const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n);
+    const money0=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);
+    const int=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(n);
+    const clean=(v,min,max,fallback)=>{let n=Number(v);return Number.isFinite(n)&&v!==''?Math.min(max,Math.max(min,n)):fallback;};
+    function airMarkup(air,i){
+      return `<div class="air-card" data-id="${air.id}">
+        <div class="air-card-head"><span><span class="air-index">${String(i+1).padStart(2,'0')}</span> Aire ${i+1}</span><button class="delete" type="button" data-remove="${air.id}" ${airs.length===1?'disabled':''} aria-label="Eliminar aire ${i+1}">Quitar</button></div>
+        <div class="controls">
+          <div class="btu-picker"><label class="label" for="btu-${air.id}">¿Qué tamaño de aire tienes?<span class="hint">BTU = capacidad de enfriamiento</span></label><div class="btu-tiles" role="group" aria-label="Capacidad del aire ${i+1}">${CAPACITIES.map(v=>`<button class="btu-tile ${v===air.btu?'selected':''}" type="button" data-set-btu="${v}" aria-pressed="${v===air.btu}"><span class="tile-unit" aria-hidden="true">▱</span><b>${int(v)}</b><small>BTU</small></button>`).join('')}</div><div class="sr-only"><select id="btu-${air.id}" data-field="btu" tabindex="-1">${CAPACITIES.map(v=>`<option value="${v}" ${air.btu===v?'selected':''}>${int(v)} BTU</option>`).join('')}</select></div></div>
+          <div><label class="label" for="qty-${air.id}">¿Cuántos iguales?</label><div class="field"><select id="qty-${air.id}" data-field="qty">${[1,2,3,4,5,6].map(v=>`<option value="${v}" ${air.qty===v?'selected':''}>${v}</option>`).join('')}</select></div></div>
+          <div><label class="label" for="hours-${air.id}">Horas al día</label><div class="field"><input id="hours-${air.id}" data-field="hours" type="number" inputmode="decimal" min="0" max="24" step="0.5" value="${air.hours}"><span class="suffix">h</span></div></div>
+          <div><label class="label" for="days-${air.id}">Días a la semana</label><div class="field"><select id="days-${air.id}" data-field="days">${[1,2,3,4,5,6,7].map(v=>`<option value="${v}" ${air.days===v?'selected':''}>${v}</option>`).join('')}</select></div></div>
+        </div>
+        <div class="input-block"><span class="label">¿Qué tanto trabaja ese aire?<span class="hint">Prueba distintos escenarios; depende del calor, la temperatura que pones y la eficiencia del equipo.</span></span><div class="pill-selector" role="group" aria-label="Nivel estimado de consumo para aire ${i+1}">${LEVEL_OPTIONS.map(({value,name})=>`<button type="button" data-level="${value}" aria-pressed="${value===air.level}" class="${value===air.level?'active':''}">${name}</button>`).join('')}</div></div>
+        <details class="details" ${air.watts!==''?'open':''}><summary>¿Sabes los watts (W) del aire? Ajústalos aquí</summary><div class="hint">Si tienes el consumo eléctrico en W de la ficha técnica, ponlo aquí; reemplaza el valor estimado por BTU. Si son watts máximos, el consumo promedio podría ser menor.</div><label class="sr-only" for="watts-${air.id}">Watts del equipo</label><div class="field field-long"><input id="watts-${air.id}" data-field="watts" type="number" inputmode="numeric" min="1" max="10000" placeholder="Ej. 1500" value="${air.watts}"><span class="suffix">W</span></div></details>
+        <div class="micro-note" data-air-note="${air.id}"></div>
+      </div>`;
+    }
+    function drawAirs(){
+      $('airs').innerHTML=airs.map(airMarkup).join('');
+      $('air-counter').textContent=`${String(airs.length).padStart(2,'0')} ${airs.length===1?'GRUPO':'GRUPOS'}`;
+      $('add-air').disabled=airs.length>=6;
+      calculate();
+    }
+    function calcAir(a){
+      const nominal=(a.watts!==''&&Number(a.watts)>0)?clean(a.watts,1,10000,a.btu/12):a.btu/12;
+      const avgW=nominal*clean(a.level,.6,1,.8);
+      const hours=clean(a.hours,0,24,0);
+      const days=clean(a.days,1,7,7);
+      const qty=clean(a.qty,1,6,1);
+      return {avgW,monthlyKwh:avgW/1000*hours*days*weeklyFactor*qty,qty};
+    }
+    function calculate(){
+      const tariff=clean($('tariff').value,0,1.5,0.30);
+      const details=airs.map((a,i)=>({...calcAir(a),a,i}));
+      const monthlyKwh=details.reduce((s,x)=>s+x.monthlyKwh,0);
+      const monthlyCost=monthlyKwh*tariff;
+      $('monthly-cost').textContent=money(monthlyCost);
+      $('monthly-kwh').textContent=`${int(monthlyKwh)} kWh`;
+      $('annual-cost').textContent=money0(monthlyCost*12);
+      $('breakdown').innerHTML=details.map(x=>{
+        const width=monthlyKwh>0?x.monthlyKwh/monthlyKwh*100:0;
+        return `<div class="mini-item"><div class="mini-head"><span>Aire ${x.i+1} · ${int(x.a.btu)} BTU${x.qty>1?' · '+x.qty+' equipos':''}</span><b>${money(x.monthlyKwh*tariff)}</b></div><div class="mini-rail"><div class="mini-fill" style="width:${width.toFixed(2)}%"></div></div></div>`;
+      }).join('');
+      details.forEach(x=>{
+        const note=$(`note-${x.a.id}`) || document.querySelector(`[data-air-note="${x.a.id}"]`);
+        if(note) note.textContent=`Potencia promedio usada para este ejemplo: ${int(x.avgW)} W por equipo. Consumo estimado de este grupo: ${int(x.monthlyKwh)} kWh al mes.`;
+      });
+      const recap=details.map(x=>`- ${x.qty} aire(s) de ${int(x.a.btu)} BTU: ${x.a.hours} h/día, ${x.a.days} días/semana; ~${int(x.monthlyKwh)} kWh/mes`).join('\n');
+      const message=`FACTURA\n¡Saludos, Cristian! Usé la calculadora de aires de Solar con Cristian y quiero evaluar mi consumo.\n\n${recap}\n\nTarifa que coloqué: $${tariff.toFixed(2)}/kWh\nEstimado de mis aires: ${int(monthlyKwh)} kWh/mes (~${money(monthlyCost)}/mes)\n\n¿Podemos revisar mi factura para tener una idea más precisa?`;
+      $('whatsapp-cta').href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+    }
+    $('airs').addEventListener('input',event=>{
+      const input=event.target.closest('[data-field]');if(!input)return;
+      const card=input.closest('[data-id]');if(!card)return;
+      const a=airs.find(a=>a.id===Number(card.dataset.id));if(!a)return;
+      const field=input.dataset.field;
+      a[field]=field==='watts'?input.value:(field==='btu'||field==='qty'||field==='days'?Number(input.value):input.value);
+      calculate();
+    });
+    $('airs').addEventListener('change',event=>{
+      const input=event.target.closest('[data-field]');if(!input)return;
+      const card=input.closest('[data-id]');if(!card)return;
+      const a=airs.find(a=>a.id===Number(card.dataset.id));if(!a)return;
+      if(['hours','days','qty'].includes(input.dataset.field)){
+        const min=input.dataset.field==='hours'?0:1;
+        const max=input.dataset.field==='hours'?24:input.dataset.field==='days'?7:6;
+        a[input.dataset.field]=clean(input.value,min,max,min);
+        input.value=a[input.dataset.field];
+      }
+      if(input.dataset.field==='watts' && input.value!==''){
+        a.watts=clean(input.value,1,10000,1000); input.value=a.watts;
+      }
+      calculate();
+    });
+    $('airs').addEventListener('click',event=>{
+      const remove=event.target.closest('[data-remove]');
+      if(remove&&airs.length>1){let i=airs.findIndex(a=>a.id===Number(remove.dataset.remove)); if(i>=0){airs.splice(i,1);drawAirs();}return;}
+      const btuButton=event.target.closest('[data-set-btu]');
+      if(btuButton){
+        const card=btuButton.closest('[data-id]');
+        const air=airs.find(a=>a.id===Number(card?.dataset.id));
+        if(air){
+          air.btu=Number(btuButton.dataset.setBtu);
+          const select=card.querySelector('[data-field="btu"]'); if(select)select.value=String(air.btu);
+          card.querySelectorAll('[data-set-btu]').forEach(btn=>{const on=Number(btn.dataset.setBtu)===air.btu;btn.classList.toggle('selected',on);btn.setAttribute('aria-pressed',String(on));});
+          calculate();
+        }
+        return;
+      }
+      const level=event.target.closest('[data-level]');
+      if(level){const card=level.closest('[data-id]'); const a=airs.find(a=>a.id===Number(card.dataset.id)); if(a){a.level=Number(level.dataset.level);card.querySelectorAll('[data-level]').forEach(btn=>{const on=Number(btn.dataset.level)===a.level;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on));});calculate();}}
+    });
+    $('add-air').addEventListener('click',()=>{if(airs.length>=6)return;airs.push({id:nextId++,btu:12000,qty:1,hours:6,days:7,level:0.8,watts:''});drawAirs();const last=$('airs').lastElementChild;last?.scrollIntoView({behavior:'smooth',block:'center'});});
+    $('tariff').addEventListener('input',calculate);
+    $('tariff').addEventListener('change',()=>{let n=clean($('tariff').value,.01,1.5,.3);$('tariff').value=n.toFixed(2);calculate();});
+    drawAirs();
+  })();
+  </script>
+</body>
+</html>
