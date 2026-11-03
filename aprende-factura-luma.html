@@ -39,6 +39,27 @@
 .edu-detail-body b{color:#354b2e}
 @media(max-width:580px){.edu-feature{padding:13px}.edu-hook{font-size:19px}.edu-barrow{grid-template-columns:67px minmax(0,1fr) 70px;gap:7px}.edu-stat strong{font-size:21px}.edu-formula strong{font-size:12px}}
 
+
+/* Arreglo de lectura: ventana completa y scroll independiente en móviles. */
+@media(max-width:940px){
+.bottom-sheet{top:0;right:0;bottom:0;left:0;height:100vh;height:100dvh;max-height:none;display:flex;flex-direction:column;border-radius:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow:hidden;transform:translateY(103%);overscroll-behavior:contain}
+.bottom-sheet.open{transform:translateY(0)}
+.sheet-handle{display:none}
+.sheet-head{flex:0 0 auto;min-height:68px;padding:12px 19px;gap:12px;align-items:center;background:var(--paper)}
+.sheet-head span{flex:1;min-width:0;line-height:1.45}
+.sheet-head span:after{content:'Desliza hacia arriba para leer toda la explicación ↓';display:block;font:650 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none;color:#708064;margin-top:5px}
+.close-sheet{flex:0 0 auto;display:grid;place-items:center}
+.sheet-content{flex:1 1 0;min-height:0;max-height:none;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;padding:0 19px calc(38px + env(safe-area-inset-bottom,0px));scrollbar-width:auto}
+.sheet-content .guide-body{max-height:none;overflow:visible;padding:0}
+}
+/* En computadora: el panel lateral permite leer hasta el final. */
+@media(min-width:941px){
+.sidebar .guide{display:flex;flex-direction:column;max-height:calc(100vh - 36px);max-height:calc(100dvh - 36px)}
+.sidebar .guide-top,.sidebar .sidebar-actions{flex:0 0 auto}
+#sidebarText{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+#sidebarText .guide-body{max-height:none;overflow:visible}
+}
+
 </style></head><body>
 <a class="skip" href="#facturas">Ir a la factura interactiva</a>
 <header class="top"><div class="shell"><div class="brand"><i class="symbol" aria-hidden="true"></i>Solar con Cristian</div><div class="header-meta">Herramienta gratuita · Puerto Rico</div></div></header>
@@ -182,6 +203,8 @@
    $$('.hotspot').forEach(el=>{const on=el.dataset.point===key;el.classList.toggle('selected',on);el.setAttribute('aria-pressed',on?'true':'false')});
    nodes.sidebar.innerHTML=presentation(key);
    nodes.sheetText.innerHTML=presentation(key);
+   nodes.sidebar.scrollTop=0;
+   nodes.sheetText.scrollTop=0;
    nodes.sheetTitle.textContent='PÁGINA '+topics[key].page+' · '+topics[key].tag.toUpperCase();
    if(window.matchMedia('(max-width:940px)').matches&&fromHotspot){recentFocus=document.activeElement;openSheet()}
  }
