@@ -181,6 +181,131 @@ function proposalSummary(p,letter){const c=calc(p),kw=systemKW(p),use=annualUse(
  const assurances=[`Garantías: equipos ${fill(p.equipWarranty)} años; instalación ${fill(p.installWarranty)} años`,`Mantenimiento: ${({unknown:'No especificado',provider:'Proveedor',client:'Cliente',other:'Otro'})[p.maintenance]}`,`Transferencia: ${({unknown:'No especificada',yes:'Sí, con condiciones',no:'No'})[p.transfer]}`,`Garantía producción: ${({unknown:'No especificada',yes:'Sí, según contrato',no:'No indicada'})[p.productionGuarantee]}`];
  return{technical,finance,assurances};
 }
+
+/* PDF real, autocontenido, para descarga móvil sin depender de window.print */
+function createAuditPdf(){
+ const W=595.28,H=841.89,M=45;
+ const streams=[];
+ let ops=[],y=0;
+ const clean=v=>String(v??'').replace(/[\r\n\t]+/g,' ').replace(/[\u2013\u2014\u2010\u2011]/g,'-').replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\u2026/g,'...').replace(/\u2022/g,'-').replace(/\u00a0/g,' ').replace(/\s+/g,' ').trim().replace(/[^\u0020-\u007e\u00a1-\u00ff]/g,'?');
+ const hex=v=>Array.from(clean(v)).map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join('');
+ function draw(t,x,by,size=10,bold=false,color='0.17 0.24 0.17'){
+  ops.push(`BT /${bold?'F2':'F1'} ${size} Tf ${color} rg 1 0 0 1 ${x.toFixed(2)} ${by.toFixed(2)} Tm <${hex(t)}> Tj ET\n`);
+ }
+ function rect(x,by,w,h,color){ops.push(`${color} rg ${x.toFixed(2)} ${by.toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re f\n`);}
+ function startPage(){
+  if(ops.length)streams.push(ops);
+  ops=[];
+  rect(0,H-78,W,78,'0.10 0.15 0.11');
+  rect(M,H-79,85,3,'0.75 0.93 0.34');
+  draw('SOLAR CON CRISTIAN',M,H-30,9.5,true,'0.82 0.96 0.55');
+  draw('AUDITOR DE PROPUESTAS SOLARES',M,H-54,15.5,true,'1 1 1');
+  y=H-109;
+ }
+ function need(height){if(y-height<74)startPage();}
+ function wrap(t,maxwidth,sz=9.4){
+  const words=clean(t).split(' '),out=[];let line='';
+  const limit=Math.max(20,Math.floor(maxwidth/(sz*0.53)));
+  for(let word of words){
+   while(word.length>limit){if(line){out.push(line);line='';}out.push(word.slice(0,limit));word=word.slice(limit);}
+   if(!line)line=word;
+   else if((line+' '+word).length<=limit)line+=' '+word;
+   else{out.push(line);line=word;}
+  }
+  if(line)out.push(line);
+  return out.length?out:[''];
+ }
+ function paragraph(t,{size=9.4,bold=false,indent=0,color='0.28 0.35 0.28',space=7}={}){
+  const x=M+indent,lines=wrap(t,W-M*2-indent,size),lh=size*1.52;
+  for(const line of lines){need(lh);draw(line,x,y,size,bold,color);y-=lh;}
+  y-=space;
+ }
+ function section(name){need(64);y-=7;draw(clean(name).toUpperCase(),M,y,11.2,true,'0.22 0.38 0.19');y-=11;rect(M,y,W-M*2,0.8,'0.83 0.88 0.78');y-=20;}
+ startPage();
+ paragraph('Reporte educativo generado localmente con los datos que introdujo el usuario.',{size:10.1,bold:true,color:'0.23 0.34 0.20',space:5});
+ paragraph('Fecha de elaboración: '+new Date().toLocaleDateString('es-PR'),{size:8.6,color:'0.42 0.48 0.39',space:13});
+ section('Consumo energético');
+ const annual=annualUse();
+ paragraph('Consumo anual: '+(Number.isFinite(annual)?integer(annual)+' kWh':'No calculado'),{bold:true});
+ for(let i=0;i<12;i+=4){
+  paragraph(Array.from({length:Math.min(4,12-i)},(_,j)=>`Mes ${i+j+1}: ${state.months[i+j]===''?'No indicado':state.months[i+j]+' kWh'}`).join('    |    '),{size:9.1,space:3});
+ }
+ const amount=state.compare?2:1;
+ for(let i=0;i<amount;i++){
+  const p=state.proposal[i],res=proposalSummary(p,i?'B':'A'),alerts=findings(p);
+  section('Propuesta '+(i?'B':'A'));
+  paragraph('Equipos y producción',{bold:true,space:5});
+  for(const line of res.technical)paragraph('- '+line,{size:9.1,indent:9,space:2});
+  paragraph('Condiciones económicas',{bold:true,space:5});
+  for(const line of res.finance)paragraph('- '+line,{size:9.1,indent:9,space:2});
+  paragraph('Garantías y condiciones',{bold:true,space:5});
+  for(const line of res.assurances)paragraph('- '+line,{size:9.1,indent:9,space:2});
+  paragraph('Hallazgos preliminares',{bold:true,space:5});
+  for(const a of alerts)paragraph('- '+a[1]+': '+a[2],{size:8.9,indent:9,space:3});
+ }
+ section('Alcance de esta evaluación');
+ paragraph('Datos introducidos por el usuario. Los cálculos financieros son nominales y no incluyen valor del dinero en el tiempo, facturas futuras de LUMA ni gastos que no hayan sido declarados. La producción, las garantías, la ingeniería y las condiciones contractuales requieren validación externa.',{size:9.2});
+ paragraph('En PPA se asume un volumen anual constante de kWh facturables para ilustrar costos. El escalador de 0% representa precio por kWh fijo, no una mensualidad garantizada.',{size:9.2});
+ paragraph('Este reporte es informativo; no constituye una certificación técnica, financiera ni legal, ni garantiza ahorro o una factura mínima.',{size:9.2,bold:true});
+ streams.push(ops);
+ const totalPages=streams.length;
+ const bodies=streams.map((items,i)=>{
+  const footer=[...items];
+  footer.push('0.84 0.89 0.79 rg 45 54 505 0.7 re f\n');
+  const ft=`SOLAR CON CRISTIAN  |  Informe educativo  |  Pagina ${i+1} de ${totalPages}`;
+  footer.push(`BT /F1 8 Tf 0.42 0.49 0.39 rg 1 0 0 1 45 39 Tm <${hex(ft)}> Tj ET\n`);
+  return footer.join('');
+ });
+ const objects=[];
+ const reserve=()=>{objects.push('');return objects.length;};
+ const catalog=reserve(),pagesId=reserve(),regularFont=reserve(),boldFont=reserve();
+ objects[catalog-1]=`<< /Type /Catalog /Pages ${pagesId} 0 R >>`;
+ objects[regularFont-1]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+ objects[boldFont-1]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+ const pageIds=[];
+ for(const stream of bodies){
+  const pageId=reserve(),contentId=reserve();pageIds.push(pageId);
+  objects[pageId-1]=`<< /Type /Page /Parent ${pagesId} 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /Font << /F1 ${regularFont} 0 R /F2 ${boldFont} 0 R >> >> /Contents ${contentId} 0 R >>`;
+  objects[contentId-1]=`<< /Length ${stream.length} >>\nstream\n${stream}endstream`;
+ }
+ objects[pagesId-1]=`<< /Type /Pages /Kids [${pageIds.map(n=>n+' 0 R').join(' ')}] /Count ${pageIds.length} >>`;
+ let pdf='%PDF-1.4\n%\xE2\xE3\xCF\xD3\n';const offsets=[0];
+ for(let i=0;i<objects.length;i++){offsets.push(pdf.length);pdf+=`${i+1} 0 obj\n${objects[i]}\nendobj\n`;}
+ const xref=pdf.length;
+ pdf+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n`;
+ for(let i=1;i<offsets.length;i++)pdf+=String(offsets[i]).padStart(10,'0')+' 00000 n \n';
+ pdf+=`trailer\n<< /Size ${objects.length+1} /Root ${catalog} 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+ const bytes=new Uint8Array(pdf.length);for(let i=0;i<pdf.length;i++)bytes[i]=pdf.charCodeAt(i)&255;
+ return new Blob([bytes],{type:'application/pdf'});
+}
+function auditPdfName(){return 'SolarConCristian_Auditoria_'+new Date().toISOString().slice(0,10)+'.pdf';}
+function downloadAuditPdf(blob,name){
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=name;a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),120000);
+ feedback('PDF generado. Si no aparece la descarga, usa «Compartir / abrir PDF» o abre la herramienta en Safari o Chrome.');
+}
+function openAuditPdf(blob){
+ const url=URL.createObjectURL(blob);
+ const tab=window.open(url,'_blank');
+ if(!tab){downloadAuditPdf(blob,auditPdfName());return;}
+ setTimeout(()=>URL.revokeObjectURL(url),120000);
+ feedback('PDF abierto. En iPhone toca Compartir → Guardar en Archivos; en Android utiliza Descargar.');
+}
+function handleAuditPdf(action){
+ try{
+  const blob=createAuditPdf(),name=auditPdfName();
+  if(action==='download'){downloadAuditPdf(blob,name);return;}
+  const file=typeof File==='function'?new File([blob],name,{type:'application/pdf'}):null;
+  if(file&&navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+   navigator.share({files:[file],title:'Auditor de propuestas solares - Solar con Cristian'})
+    .catch(err=>{if(err?.name!=='AbortError')openAuditPdf(blob);});
+   return;
+  }
+  openAuditPdf(blob);
+ }catch(err){feedback('No se pudo crear el PDF. Puedes copiar el resumen o utilizar la opción de imprimir.');}
+}
+
 function composeReport(){const annual=annualUse();const data=state.proposal.slice(0,state.compare?2:1).map((p,i)=>proposalSummary(p,i?'B':'A'));
  const lines=['¡Saludos, Cristian! Me gustaría solicitar una segunda evaluación contigo de mi propuesta solar.','','DATOS DE LA HERRAMIENTA · SOLAR CON CRISTIAN',`Consumo anual: ${Number.isFinite(annual)?integer(annual)+' kWh':'No calculado'}`,`12 meses (kWh): ${state.months.map((v,i)=>`M${i+1}: ${v===''?'—':v}`).join(' | ')}`];
  data.forEach(x=>lines.push('',...x.technical,...x.finance,...x.assurances));
@@ -200,7 +325,7 @@ function page5(){const number=state.compare?2:1;
  <div class="report" id="reportVisible">${humanReport()}</div>
  ${state.demo?'<div class="info warn"><strong>Ejemplo cargado:</strong> borra el ejemplo e introduce tus datos antes de solicitar una evaluación.</div>':''}
  <div class="section-name">Lleva tu información contigo</div>
- <div class="actions-grid no-print"><button type="button" class="btn light full" id="copyReport">Copiar resumen</button><button type="button" class="btn light full" id="printReport">Guardar o imprimir PDF</button></div>
+ <div class="actions-grid no-print"><button type="button" class="btn lime full" id="downloadPdf">Descargar PDF</button><button type="button" class="btn light full" id="sharePdf">Compartir / guardar PDF</button><button type="button" class="btn light full" id="copyReport">Copiar resumen</button><button type="button" class="btn light full" id="printReport">Imprimir (alternativa)</button></div><p class="hint no-print">En iPhone, usa «Compartir / guardar PDF» y elige «Guardar en Archivos». Si estás en el navegador interno de Instagram, puedes abrir la herramienta en Safari o Chrome.</p>
  <div style="margin-top:12px"><button type="button" class="btn lime full" id="sendWA" ${state.demo?'disabled':''}>Solicitar segunda evaluación por WhatsApp ↗</button></div><div id="actionStatus" aria-live="polite"></div>
  <p class="hint">El botón abre WhatsApp con un saludo y los datos que introdujiste. Tú revisas y decides si envías el mensaje. No se envía automáticamente ni se guardan respuestas en un servidor.</p>
  ${navButtons()}</div>`;
@@ -224,6 +349,8 @@ $('#app').addEventListener('click',async e=>{
  if(t.id==='loadDemo'){loadDemo();return;}
  if(t.id==='resetEverything'){state=initial();render();return;}
  if(t.id==='clearMonths'){state.months=Array(12).fill('');render();return;}
+ if(t.id==='downloadPdf'){handleAuditPdf('download');return;}
+ if(t.id==='sharePdf'){handleAuditPdf('share');return;}
  if(t.id==='printReport'){$('#print-report').innerHTML=humanReport();window.print();return;}
  if(t.id==='copyReport'){try{await navigator.clipboard.writeText(composeReport());feedback('Resumen copiado. Ya puedes pegarlo donde lo necesites.');}catch(err){const area=document.createElement('textarea');area.value=composeReport();document.body.appendChild(area);area.select();const copied=document.execCommand('copy');area.remove();feedback(copied?'Resumen copiado.':'La copia no fue posible: selecciona la información del reporte y cópiala manualmente.');}return;}
  if(t.id==='sendWA'){
