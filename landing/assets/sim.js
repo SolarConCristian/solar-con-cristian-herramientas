@@ -687,7 +687,8 @@
   if (gsap && ST && !RM) {
     gsap.registerPlugin(ST);
     // scroll suave en toda la página (Lenis) sincronizado con ScrollTrigger
-    if (window.Lenis) {
+    var FINE = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (window.Lenis && FINE) {
       var lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
       lenis.on('scroll', ST.update);
       gsap.ticker.add(function (t) { lenis.raf(t * 1000); });

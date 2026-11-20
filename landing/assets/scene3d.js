@@ -129,14 +129,16 @@
     opts = opts || {};
     var self = this; this.wrap = wrap; this.vis = false; this.state = null; this.flows = {}; this.t = 0; this.drag = 0; this.tall = !!opts.tall;
     var R = this.r = new T.WebGLRenderer({ antialias: true, powerPreference: 'low-power' });
-    R.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); R.outputEncoding = T.sRGBEncoding; R.shadowMap.enabled = true; R.shadowMap.type = T.PCFSoftShadowMap;
+    var LOW = (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || innerWidth < 900;
+    this.low = LOW;
+    R.setPixelRatio(Math.min(window.devicePixelRatio || 1, LOW ? 1.25 : 2)); R.outputEncoding = T.sRGBEncoding; R.shadowMap.enabled = !LOW; R.shadowMap.type = T.PCFSoftShadowMap;
     R.domElement.className = 'gl'; wrap.appendChild(R.domElement);
     this.labels = document.createElement('div'); this.labels.className = 'g-labels'; wrap.appendChild(this.labels);
     var S = this.scene = new T.Scene(); S.fog = new T.Fog(0xcfe9fb, 70, 220);
     this.cam = new T.PerspectiveCamera(32, 1, 0.1, 300);
     this.hemi = new T.HemisphereLight(0xdfefff, 0x48603c, 0.8); S.add(this.hemi);
     this.amb = new T.AmbientLight(0x6070a0, 0.12); S.add(this.amb);
-    var sun = this.sun = new T.DirectionalLight(0xfff2d6, 1.2); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024);
+    var sun = this.sun = new T.DirectionalLight(0xfff2d6, 1.2); sun.castShadow = !LOW; sun.shadow.mapSize.set(1024, 1024);
     var sc = sun.shadow.camera; sc.left = -16; sc.right = 16; sc.top = 16; sc.bottom = -16; sc.near = 1; sc.far = 90; sun.shadow.bias = -0.0006; S.add(sun); S.add(sun.target);
     this.sunBall = new T.Mesh(new T.SphereGeometry(2.2, 20, 20), new T.MeshBasicMaterial({ color: 0xFFD45A, fog: false })); S.add(this.sunBall);
     this.moon = new T.Mesh(new T.SphereGeometry(1.4, 16, 16), new T.MeshBasicMaterial({ color: 0xe8ecf5, fog: false })); S.add(this.moon);

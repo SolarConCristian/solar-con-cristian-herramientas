@@ -6,7 +6,7 @@
 <title>Solar con Cristian · Energía solar en Puerto Rico</title>
 <meta name="description" content="Energía solar para casas y negocios en Puerto Rico: medición neta, autoconsumo y off-grid. Diseño a tu techo, garantías de 10 a 25 años según la marca y servicio real. Propuesta de medición neta en 24 horas.">
 <meta name="theme-color" content="#040705">
-<!-- Seguimiento de anuncios: pega aquí tu Meta Pixel / Google tag / TikTok pixel. Los clics de WhatsApp y formulario ya envían eventos (assets/cta.js). -->
+<!-- Seguimiento opcional: si algún día quieres medir anuncios, pega aquí tu píxel. Los clics de WhatsApp y formulario ya envían eventos (assets/cta.js). -->
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://solarconcristian.github.io/solar-con-cristian-herramientas/landing/"><meta property="og:url" content="https://solarconcristian.github.io/solar-con-cristian-herramientas/landing/"><meta property="og:type" content="website"><meta property="og:locale" content="es_PR"><meta property="og:site_name" content="Solar con Cristian">
 <meta property="og:title" content="Solar con Cristian · Solar sin promesas falsas">
@@ -225,7 +225,7 @@ footer img{height:36px;margin-bottom:12px}footer p{margin:0 0 6px;max-width:440p
 .simlive{grid-column:1/-1}
 .simcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:14px}
 .simcta p{margin:0;font-size:12.5px;color:var(--mut);max-width:520px}
-@media(max-width:900px){.dia{grid-template-columns:1fr;gap:12px}.caps{min-height:104px}.simgrid{grid-template-columns:1fr}
+@media(max-width:900px){.dia{grid-template-columns:1fr;gap:12px}.caps{min-height:132px}.simgrid{grid-template-columns:1fr}
 #dia h2{margin:14px 0 10px!important;font-size:22px}#daysim .chart,#daysim .ticks,#daysim .legend,#daysim .tot{display:none}.cap2 b{font-size:30px;margin-bottom:6px}.cap2 span{font-size:13px}
 .kpis{grid-template-columns:repeat(2,1fr)}.kpis div:nth-child(3){border-left:0;padding-left:0}.kpis div:nth-child(n+3){border-top:1px solid var(--line)}.eco li{grid-template-columns:1fr;gap:2px}.pinbox{padding:16px 0}}
 @media(max-width:600px){.hud{grid-template-columns:repeat(2,1fr)}}
@@ -472,9 +472,20 @@ main>.cta-strip{margin-top:-40px}
 @media(prefers-reduced-motion:reduce){.cta-wa{animation:none}#cta-bar{transition:none}}
 @media(max-width:640px){.cta-btns,.cta-inline,.hcopy .row{flex-direction:column;align-items:stretch}.cta-btns .btn,.cta-inline .btn,.hcopy .row .btn{width:100%;flex:none}.btn{white-space:nowrap}.cta-strip>div:first-child{width:100%}}
 .btn .dot{flex:none;aspect-ratio:1}.btn .dot svg{flex:none;display:block}
+/* rendimiento en celulares: sin desenfoques ni sombras pesadas (evita que se trabe al hacer scroll) */
+@media(max-width:900px),(pointer:coarse){
+*,*:before,*:after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.pill{background:rgba(24,30,25,.9)}.btn.glass{background:rgba(255,255,255,.88)}.sel{background:rgba(0,0,0,.5)}
+.cd,.two>div,.panel,.res{box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.tb-dev{box-shadow:0 20px 40px rgba(0,0,0,.5),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+.obj img{filter:none!important}
+.tb-glow{display:none}
+.simbox{box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.tilt:after{display:none}
+}
+/* móvil: tablet vertical sin textos encimados */
+.tb-pt .sl .txt>p:not(.nn){display:none}.tb-pt .hero2{margin-top:0}.tb-pt .tb-ui{top:calc(var(--u,2.7cqw)*2.6);right:calc(var(--u,2.7cqw)*2.6);transform:none;flex-direction:row}.tb-pt .tb-dots{flex-direction:row}.tb-pt .obj figcaption{white-space:normal;text-align:center;max-width:88%;line-height:1.25;font-size:calc(var(--u)*1.5);padding:calc(var(--u)*.6) calc(var(--u)*1.2);bottom:calc(var(--u)*1.4)}.tb-pt .sl{align-content:start;padding-top:calc(var(--u)*7)}.tb-pt .s0,.tb-pt .s5{align-content:center;padding-top:calc(var(--u)*3)}.tb-pt .obj img{max-height:34cqh}.tb-pt .duo img.a{max-height:32cqh}.tb-pt .duo img.b{max-height:26cqh;bottom:19cqh}.tb-pt .trio img.a,.tb-pt .trio img.c{max-height:22cqh;bottom:19cqh}.tb-pt .trio img.b{max-height:28cqh}
 /* chispas al arrastrar */
-#sparks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999}
-.sparking,.sparking *{-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
@@ -821,10 +832,10 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer src="assets/scene3d.js?v=6"></script>
-<script defer src="assets/tablet.js?v=6"></script>
-<script defer src="assets/sim.js?v=8"></script>
-<script defer src="assets/fx.js?v=2"></script>
+<script defer src="assets/scene3d.js?v=9"></script>
+<script defer src="assets/tablet.js?v=9"></script>
+<script defer src="assets/sim.js?v=9"></script>
+<script defer src="assets/fx.js?v=9"></script>
 <script defer src="assets/cta.js?v=1"></script>
 </body>
 </html>

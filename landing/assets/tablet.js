@@ -15,6 +15,7 @@
 
   if (!gsap || !ST || RM) { sec.classList.add('tablet-static'); slides.forEach(function (s) { s.classList.add('on'); }); return; }
   gsap.registerPlugin(ST);
+  ST.config({ ignoreMobileResize: true });
 
   var P = function () { return mq.matches; };
   function fit() {
