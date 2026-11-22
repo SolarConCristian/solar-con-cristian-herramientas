@@ -485,6 +485,34 @@ main>.cta-strip{margin-top:-40px}
 }
 /* móvil: tablet vertical sin textos encimados */
 .tb-pt .sl .txt>p:not(.nn){display:none}.tb-pt .hero2{margin-top:0}.tb-pt .tb-ui{top:calc(var(--u,2.7cqw)*2.6);right:calc(var(--u,2.7cqw)*2.6);transform:none;flex-direction:row}.tb-pt .tb-dots{flex-direction:row}.tb-pt .obj figcaption{white-space:normal;text-align:center;max-width:88%;line-height:1.25;font-size:calc(var(--u)*1.5);padding:calc(var(--u)*.6) calc(var(--u)*1.2);bottom:calc(var(--u)*1.4)}.tb-pt .sl{align-content:start;padding-top:calc(var(--u)*7)}.tb-pt .s0,.tb-pt .s5{align-content:center;padding-top:calc(var(--u)*3)}.tb-pt .obj img{max-height:34cqh}.tb-pt .duo img.a{max-height:32cqh}.tb-pt .duo img.b{max-height:26cqh;bottom:19cqh}.tb-pt .trio img.a,.tb-pt .trio img.c{max-height:22cqh;bottom:19cqh}.tb-pt .trio img.b{max-height:28cqh}
+/* ===== MÓVIL v3: correcciones tras revisar capturas en un celular emulado ===== */
+.pl-list li:before{content:attr(data-n);counter-increment:none}.pl-zl li:before{content:none}
+@media(max-width:900px){
+.ly i{display:none}
+.ui{background:rgba(8,13,9,.66);border-color:rgba(255,255,255,.2)}
+}
+@media(max-width:860px){
+.nav{gap:10px;padding:14px 14px}.nav>a:first-child{min-width:0;flex:1 1 auto}.nav img{height:30px;max-width:100%}
+.nav-cta{flex:none}.nav .btn.cta-wa{height:40px;padding:0 6px 0 16px;font-size:13px;gap:8px}.nav .btn .dot{width:28px;height:28px}
+}
+.tb-pt .nav2{display:none}
+.tb-pt .s4{grid-template-columns:minmax(0,1fr)}.tb-pt .s4 .txt{min-width:0}
+.tb-pt .nums{grid-template-columns:repeat(2,minmax(0,1fr))}.tb-pt .nums div{padding:calc(var(--u)*1.4);min-width:0}
+.tb-pt .nums b{font-size:calc(var(--u)*4.6)}.tb-pt .nums b:not([data-n]){font-size:calc(var(--u)*3.4);white-space:normal;line-height:1.1}
+.tb-pt .nums span{font-size:calc(var(--u)*1.7)}
+.tb-pt .nn{font-size:calc(var(--u)*3)!important;white-space:normal;max-width:100%}
+.tb-pt .wty{font-size:calc(var(--u)*1.55);padding:calc(var(--u)*.5) calc(var(--u)*1.1);line-height:1.25}
+/* los equipos van en una caja fija debajo del texto: nada se sale ni se encima */
+.tb-pt .sl{position:relative}
+.tb-pt .obj{position:absolute;left:3%;right:3%;bottom:calc(var(--u)*8.5);height:29cqh;display:block;margin:0;min-height:0}
+.tb-pt .obj img,.tb-pt .duo img,.tb-pt .trio img{position:absolute;left:0;right:0;margin:auto;bottom:0;top:auto;transform:none;max-height:100%;max-width:44%;width:auto;height:auto}
+.tb-pt .duo img.a{left:0;right:auto;max-height:92%;max-width:46%}.tb-pt .duo img.b{left:auto;right:0;max-height:76%;max-width:40%}
+.tb-pt .trio img.a{left:0;right:auto;max-height:70%;max-width:27%}.tb-pt .trio img.b{max-height:92%;max-width:44%}.tb-pt .trio img.c{left:auto;right:0;max-height:70%;max-width:27%}
+.tb-pt .obj figcaption{position:absolute;left:50%;top:100%;bottom:auto;transform:translateX(-50%);margin-top:calc(var(--u)*1.6);width:max-content;max-width:94%;white-space:normal;text-align:center;font-size:calc(var(--u)*1.5)}
+.tb-pt .ring{top:60%;width:calc(var(--u)*20)}.tb-pt .ring.r2{width:calc(var(--u)*27)}
+.tb-pt .streak{top:48%}
+@media(max-width:860px){.simcta{flex-direction:column;align-items:stretch}.simcta>div{width:100%}.simcta .btn{flex:1 1 100%;width:100%;min-width:0;justify-content:space-between}.cta-xl{font-size:14px;padding-left:18px}.simcta p{max-width:none}}
+@media(max-width:420px){.nav .btn.cta-wa{font-size:0;gap:0;padding:0 6px;width:44px;height:44px;justify-content:center}.nav .btn.cta-wa .dot{width:32px;height:32px}.nav img{height:28px}}
 /* chispas al arrastrar */
 </style>
 </head>
@@ -495,7 +523,7 @@ main>.cta-strip{margin-top:-40px}
 <nav class="nav" aria-label="Principal">
 <a href="#top"><img src="assets/logo-white.svg" alt="Solar con Cristian · Energía Solar PR"></a>
 <ul><li><a href="#simulador">Simulador</a></li><li><a href="#como">Cómo funciona</a></li><li><a href="#todo">Garantías</a></li><li><a href="#preguntas">Preguntas</a></li></ul>
-<div class="nav-cta"><a class="nav-form" data-track="form_nav" href="https://forms.gle/PQHGJS21RnGeX22AA" target="_blank" rel="noopener">Formulario</a><a class="btn cta-wa" data-wa data-track="wa_nav" href="https://wa.me/17873901302" target="_blank" rel="noopener">WhatsApp <span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span></a></div>
+<div class="nav-cta"><a class="nav-form" data-track="form_nav" href="https://forms.gle/PQHGJS21RnGeX22AA" target="_blank" rel="noopener">Formulario</a><a class="btn cta-wa" aria-label="Escribir por WhatsApp" data-wa data-track="wa_nav" href="https://wa.me/17873901302" target="_blank" rel="noopener">WhatsApp <span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span></a></div>
 </nav>
 <div class="mark" aria-hidden="true">Solar</div>
 <div class="prod" role="img" aria-label="Panel solar en medio del bosque"></div>
@@ -582,13 +610,13 @@ main>.cta-strip{margin-top:-40px}
 <span class="pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18M9 5v14M15 5v14"/></svg>Por dentro</span>
 <h2 style="margin:22px 0 26px">Qué hay dentro de cada placa solar</h2>
 <ol class="pl-list" id="pl-list">
-<li><b>Vidrio templado</b><span>Unos 3.2 mm, con capa antirreflejo. Aguanta lluvia, granizo y salitre, y deja pasar la luz.</span></li>
-<li><b>EVA (encapsulante)</b><span>Lámina transparente que sella las celdas y las protege de la humedad.</span></li>
-<li><b>Celdas solares</b><span>Silicio monocristalino: aquí la luz del sol se convierte en electricidad.</span></li>
-<li><b>EVA trasero</b><span>Segunda capa que envuelve las celdas por detrás.</span></li>
-<li><b>Lámina trasera (backsheet)</b><span>Aísla y protege la parte de atrás del calor y la humedad.</span></li>
-<li><b>Marco de aluminio</b><span>Le da rigidez a la placa y es donde se ancla al techo.</span></li>
-<li><b>Caja de conexiones</b><span>Diodos de bypass y cables MC4 que llevan la energía al inversor.</span></li>
+<li data-n="1"><b>Vidrio templado</b><span>Unos 3.2 mm, con capa antirreflejo. Aguanta lluvia, granizo y salitre, y deja pasar la luz.</span></li>
+<li data-n="2"><b>EVA (encapsulante)</b><span>Lámina transparente que sella las celdas y las protege de la humedad.</span></li>
+<li data-n="3"><b>Celdas solares</b><span>Silicio monocristalino: aquí la luz del sol se convierte en electricidad.</span></li>
+<li data-n="4"><b>EVA trasero</b><span>Segunda capa que envuelve las celdas por detrás.</span></li>
+<li data-n="5"><b>Lámina trasera (backsheet)</b><span>Aísla y protege la parte de atrás del calor y la humedad.</span></li>
+<li data-n="6"><b>Marco de aluminio</b><span>Le da rigidez a la placa y es donde se ancla al techo.</span></li>
+<li data-n="7"><b>Caja de conexiones</b><span>Diodos de bypass y cables MC4 que llevan la energía al inversor.</span></li>
 </ol>
 <ol class="pl-list pl-zl" id="pl-zl">
 <li><b>a · Celda cortada a la mitad</b><span>Half-cut: menos pérdida por calor y menos efecto cuando hay sombra.</span></li>
@@ -832,10 +860,10 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer src="assets/scene3d.js?v=9"></script>
-<script defer src="assets/tablet.js?v=9"></script>
-<script defer src="assets/sim.js?v=9"></script>
-<script defer src="assets/fx.js?v=9"></script>
+<script defer src="assets/scene3d.js?v=12"></script>
+<script defer src="assets/tablet.js?v=12"></script>
+<script defer src="assets/sim.js?v=12"></script>
+<script defer src="assets/fx.js?v=12"></script>
 <script defer src="assets/cta.js?v=1"></script>
 </body>
 </html>
